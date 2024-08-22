@@ -9,3 +9,14 @@ class Todo:
     def mark_completed(self):
         self.completed = True
 
+    def add_tag(self, tag: str):
+        tag_count = 0
+        for i in self.tags:
+            if tag == self.tags:
+                tag_count += 1
+        if tag_count != 0:
+            self.tags.append(tag)
+
+
+
+
