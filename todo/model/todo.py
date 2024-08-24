@@ -11,7 +11,7 @@ class Todo:
 
     def add_tag(self, tag: str):
         tag_count = 0
-        for i in self.tags:
+        for _ in self.tags:
             if tag == self.tags:
                 tag_count += 1
         if tag_count == 0:
@@ -30,9 +30,16 @@ class TodoBook:
         self.todos[code_id] = Todo(code_id, title, description)
         return code_id
 
+    def pending_todos(self) -> list[Todo]:
+        return [self.todos[todo] for todo in self.todos if self.todos[todo].completed == False]
 
 
+tareas = TodoBook()
+tareas.add_todo("tarea 1", "prueba")
+tareas.add_todo("tarea 2", "prueba 2")
 
-
-
-
+print(tareas.todos[1])
+print(tareas.todos[1].completed)
+tareas.todos[1].mark_completed()
+print(tareas.todos[1].completed)
+print(tareas.pending_todos())
