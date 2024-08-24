@@ -33,6 +33,9 @@ class TodoBook:
     def pending_todos(self) -> list[Todo]:
         return [self.todos[todo] for todo in self.todos if self.todos[todo].completed == False]
 
+    def completed_todos(self) -> list[Todo]:
+        return [self.todos[todo] for todo in self.todos if self.todos[todo].completed == True]
+
 
 tareas = TodoBook()
 tareas.add_todo("tarea 1", "prueba")
