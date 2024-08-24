@@ -36,6 +36,21 @@ class TodoBook:
     def completed_todos(self) -> list[Todo]:
         return [self.todos[todo] for todo in self.todos if self.todos[todo].completed == True]
 
+    def tags_todo_count(self) -> dict[str, int]:
+        tag: int = 1
+        todo_tag: int = 1
+        count_object_for_tag: dict[str, int] = {}
+        all_tags = [self.todos[tag].tags for tag in self.todos[tag].tags]
+        for tag in all_tags:
+            count_tag: int = 0
+            tag_string: str = all_tags[tag]
+            for todo in self.todos:
+                for todo_tag in self.todos[todo].tags[todo_tag]:
+                    if all_tags[tag] == self.todos[todo].tags[todo_tag]:
+                        count_tag += 1
+            count_object_for_tag[tag_string] = count_tag
+        return count_object_for_tag
+
 
 tareas = TodoBook()
 tareas.add_todo("tarea 1", "prueba")
