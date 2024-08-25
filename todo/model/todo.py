@@ -60,6 +60,5 @@ print(tareas.todos[1])
 print(tareas.todos[1].completed)
 tareas.todos[1].mark_completed()
 print(tareas.todos[1].completed)
-#print(tareas.pending_todos())
-
-tareas.tags_todo_count()
+print(tareas.pending_todos())
+print(tareas.tags_todo_count())
