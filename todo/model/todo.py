@@ -37,27 +37,29 @@ class TodoBook:
         return [self.todos[todo] for todo in self.todos if self.todos[todo].completed == True]
 
     def tags_todo_count(self) -> dict[str, int]:
-        tag: int = 1
-        todo_tag: int = 1
+        all_tags: list[str] = []
         count_object_for_tag: dict[str, int] = {}
-        all_tags = [self.todos[tag].tags for tag in self.todos[tag].tags]
+        # all_tags = [self.todos[tag].tags[tag] for tag in self.todos[tag].tags]
+        # No se puede utilizar este list comprehension debido a que se necesitan dos iteradores de diferente tipo
+        for todo in self.todos:
+            for tag in self.todos[todo].tags:
+                all_tags.append(tag)
         for tag in all_tags:
-            count_tag: int = 0
-            tag_string: str = all_tags[tag]
-            for todo in self.todos:
-                for todo_tag in self.todos[todo].tags[todo_tag]:
-                    if all_tags[tag] == self.todos[todo].tags[todo_tag]:
-                        count_tag += 1
-            count_object_for_tag[tag_string] = count_tag
+            count_object_for_tag[tag] = all_tags.count(tag)
         return count_object_for_tag
 
 
 tareas = TodoBook()
 tareas.add_todo("tarea 1", "prueba")
 tareas.add_todo("tarea 2", "prueba 2")
+tareas.todos[1].add_tag("work")
+tareas.todos[1].add_tag("study")
+tareas.todos[2].add_tag("work")
 
 print(tareas.todos[1])
 print(tareas.todos[1].completed)
 tareas.todos[1].mark_completed()
 print(tareas.todos[1].completed)
-print(tareas.pending_todos())
+#print(tareas.pending_todos())
+
+tareas.tags_todo_count()
