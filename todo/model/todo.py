@@ -31,10 +31,10 @@ class TodoBook:
         return code_id
 
     def pending_todos(self) -> list[Todo]:
-        return [self.todos[todo] for todo in self.todos if self.todos[todo].completed == False]
+        return [self.todos[todo] for todo in self.todos if self.todos[todo].completed is False]
 
     def completed_todos(self) -> list[Todo]:
-        return [self.todos[todo] for todo in self.todos if self.todos[todo].completed == True]
+        return [self.todos[todo] for todo in self.todos if self.todos[todo].completed]
 
     def tags_todo_count(self) -> dict[str, int]:
         all_tags: list[str] = []
